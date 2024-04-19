@@ -6,73 +6,95 @@
 /*   By: mbankhar <mbankhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 17:32:42 by mbankhar          #+#    #+#             */
-/*   Updated: 2024/04/19 11:50:42 by mbankhar         ###   ########.fr       */
+/*   Updated: 2024/04/19 14:03:09 by mbankhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "push_swap.h"
 
-void  find_min_max(int **min, int **max, int size, char array[])
+ // Allocate memory for count array
+int	*make_second_array(int range)
+{
+	int	*count;
+	int	i;
+
+	i = 0;
+	count = (int *)malloc(range * sizeof(int));
+	if (count == NULL) 
+	{
+		printf("Memory allocation failed\n");
+		return (NULL);
+	}
+
+  // Initialize count array with all zeros.
+	i = 0;
+	while (i < range)
+	{
+		count[i] = 0;
+		i++;
+	}
+	return (count);
+}
+/**
+ * @brief Finds the minimum and maximum value.
+ * 
+ * @param min 
+ * @param max 
+ * @param size 
+ * @param array 
+ */
+void	find_min_max(int **min, int **max, int size, int *array)
 {
 	int	i;
 
 	i = 1;
+	*min = &array[0];
+	*max = &array[0];
 	while (i < size)
 	{
-	if (array[i] < *min)
-		*min = &array[i];
-	if (array[i] > *max)
-		*max = &array[i];
-	i++;
+		if (array[i] < **min)
+			*min = &array[i];
+		if (array[i] > **max)
+			*max = &array[i];
+		i++;
 	}
 }
-#include "push_swap.h"
 
+void	changevalue_to_index()
+{
+	
+}
+/**
+ * @brief Uses counting sorth algorith
+ * to sort the array.
+ * 
+ * @param array An array of integers;
+ * @param The size of the Array;
+ */
 void	countingsort(int array[], int size)
 {
-  // Find the smallest and largest element of the array
 	int	*min;
 	int	*max;
 	int	i;
+	int	range;
+	int	*count;
 
-	min = &array[0];
-	max = &array[0];
 	find_min_max(&min, &max, size, array);
-	// i = 1;
-	// while (i < size)
-	// {
-	// if (array[i] < min)
-	// 	min = array[i];
-	// if (array[i] > max)
-	// 	max = array[i];
-	// i++;
-	// }
-  
-  int range = max - min + 1;
+	range = *max - *min + 1;
+	count = make_second_array(range);
 
-  // Allocate memory for count array
-  int *count = (int *)malloc(range * sizeof(int));
-  if (count == NULL) {
-    printf("Memory allocation failed\n");
-    return;
-  }
-
-  // Initialize count array with all zeros.
+//   Store the count of each element
   i = 0;
-  while (i < range) {
-    count[i] = 0;
-    i++;
-  }
-
-  // Store the count of each element
-  i = 0;
-  while (i < size) {
-    count[array[i] - min]++;
+  while (i < size)
+  {
+    count[array[i] - *min]++;
     i++;
   }
 
   // Store the cumulative count of each array
   i = 1;
-  while (i < range) {
+  while (i < range)
+  {
     count[i] += count[i - 1];
     i++;
   }
@@ -88,8 +110,8 @@ void	countingsort(int array[], int size)
 
   i = size - 1;
   while (i >= 0) {
-    output[count[array[i] - min] - 1] = array[i];
-    count[array[i] - min]--;
+    output[count[array[i] - *min] - 1] = array[i];
+    count[array[i] - *min]--;
     i--;
   }
 
@@ -118,6 +140,7 @@ void printArray(int array[], int size)
 // Driver code
 int main(int argc, char *argv[])
 {
+
     if (argc < 2) {
         printf("Usage: %s <num1> <num2> ... <numN>\n", argv[0]);
         return 1;
@@ -132,7 +155,8 @@ int main(int argc, char *argv[])
 
     // Convert command-line arguments to integers and store in array
     int i = 0;
-    while (i < n) {
+    while (i < n)
+    {
         array[i] = atoi(argv[i + 1]);
         i++;
     }
