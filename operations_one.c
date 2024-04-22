@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations.c                                       :+:      :+:    :+:   */
+/*   operations_one.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbankhar <mbankhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 15:13:53 by mbankhar          #+#    #+#             */
-/*   Updated: 2024/04/21 17:24:05 by mbankhar         ###   ########.fr       */
+/*   Updated: 2024/04/22 14:35:44 by mbankhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,14 +74,14 @@ void	push_a(int *array_a, int *array_b, int *size_a, int *size_b)
 			i--;
 		}
 		array_a[0] = array_b[0];
-		size_a++;
+		(*size_a)++;
 		i = 0;
 		while (i < *size_b)
 		{
 			array_b[i] = array_b[i + 1];
 			i++;
 		}
-		size_b--;
+		(*size_b)--;
 	}
 	printf("pa\n");
 }
@@ -99,14 +99,14 @@ void	push_b(int *array_a, int *array_b, int *size_a, int *size_b)
 			i--;
 		}
 		array_b[0] = array_a[0];
-		size_b++;
+		(*size_b)++;
 		i = 0;
 		while (i < *size_a)
 		{
 			array_a[i] = array_a[i + 1];
 			i++;
 		}
-		size_a--;
+		(*size_a)--;
 	}
 	printf("pb\n");
 }
