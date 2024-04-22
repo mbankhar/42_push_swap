@@ -6,7 +6,7 @@
 /*   By: mbankhar <mbankhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 17:32:42 by mbankhar          #+#    #+#             */
-/*   Updated: 2024/04/22 15:13:42 by mbankhar         ###   ########.fr       */
+/*   Updated: 2024/04/22 16:57:17 by mbankhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,22 @@ int	main(int argc, char **argv)
 		array_a = getnumbers2(argc, argv, &size_a);
 	if (checkforerror(array_a, size_a))
 		array_b = get_array_b(array_a, array_b, size_a, &size_b);
-
-
+	magichappenshere(array_a, array_b, size_a, size_b);
+	// int i = -1;
+	// while (++i < size_a)
+	// {
+	// 	printf("%d", array_a[i]);
+	// }
+	// reverse_rotate_a(array_a, size_a);
+	// swap_a(array_a);
+	// swap_a(array_a);
+	// reverse_rotate_a(array_a, size_a);
+	// reverse_rotate_a(array_a, size_a);
+	// reverse_rotate_a(array_a, size_a);
+	// rotate_a(array_a, size_a);
+	// i = -1;
+	// while (++i < size_a)
+	// {
+	// 	printf("%d ", array_a[i]);
+	// }
 }

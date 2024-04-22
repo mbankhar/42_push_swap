@@ -6,145 +6,85 @@
 /*   By: mbankhar <mbankhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 09:45:13 by mbankhar          #+#    #+#             */
-/*   Updated: 2024/04/22 10:05:27 by mbankhar         ###   ########.fr       */
+/*   Updated: 2024/04/22 17:30:26 by mbankhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-//  // Allocate memory for count array
-// int	*make_second_array(int range, int *array, int *min, int size)
-// {
-// 	int	*count;
-// 	int	i;
+void findminmax(int *arr, int size, int *min, int *max)
+{
+	int	i;
 
-// 	i = 0;
-// 	count = (int *)malloc(range * sizeof(int));
-// 	if (count == 0)
-// 		return (NULL);
-// 	i = 0;
-// 	while (i < range)
-// 		count[i++] = 0;
-// 	i = 0;
-// 	while (i < size)
-// 	{
-// 		count[array[i] - *min]++;
-// 		i++;
-// 	}
-// 	i = 1;
-// 	while (i < range)
-// 	{
-// 		count[i] += count[i - 1];
-// 		i++;
-// 	}
-// 	return (count);
-// }
+	i = 1;
+	while (i < size)
+	{
+		if (arr[i] < *min)
+		{
+			*min = arr[i];
+		}
+		if (arr[i] > *max)
+		{
+			*max = arr[i];
+		}
+		i++;
+	}
+}
 
-// /**
-//  * @brief Finds the minimum and maximum value.
-//  * 
-//  * @param min 
-//  * @param max 
-//  * @param size 
-//  * @param array 
-//  */
-// void	find_min_max(int **min, int **max, int size, int *array)
-// {
-// 	int	i;
+int	issorted(int *array_a, int size_a)
+{
+	int	i;
 
-// 	i = 1;
-// 	*min = &array[0];
-// 	*max = &array[0];
-// 	while (i < size)
-// 	{
-// 		if (array[i] < **min)
-// 			*min = &array[i];
-// 		if (array[i] > **max)
-// 			*max = &array[i];
-// 		i++;
-// 	}
-// }
+	i = 0;
+	while (i < size_a - 1)
+	{
+		if (array_a[i] > array_a[i + 1])
+		{
+			return (0);
+		}
+		i++;
+	}
+	return (1);
+}
 
-// /**
-//  * @brief Uses counting sorth algorith
-//  * to sort the array.
-//  * 
-//  * @param array An array of integers;
-//  * @param The size of the Array;
-//  */
-// void	countingsort(int array[], int size)
-// {
-// 	int	*min;
-// 	int	*max;
-// 	int	i;
-// 	int	range;
-// 	int	*count;
+void	sort_three(int	*array_a, int size_a)
+{
+	int	min;
+	int	max;
 
-// 	find_min_max(&min, &max, size, array);
-// 	range = *max - *min + 1;
-// 	count = make_second_array(range, array, min, size);
-// 	int *output = (int *)malloc(size * sizeof(int));
-// 	if (output == NULL)
-// 	{
-// 		printf("Memory allocation failed\n");
-// 		free(count);
-// 		return ;
-// 	}
-// 	i = size -1;
-// 	while (i >= 0)
-// 	{
-// 		output[count[array[i] - *min] - 1] = array[i];
-// 		count[array[i] - *min]--;
-// 		i--;
-// 	}
-// 	i = 0;
-// 	while (i < size)
-// 	{
-// 		array[i] = output[i];
-// 		i++;
-// 	}
-// 	free(count);
-// 	free(output);
-// }
+	min = array_a[0];
+	max = array_a[0];
+	findminmax(array_a, size_a, &min, &max);
+	if (array_a[0] == min)
+	{
+		reverse_rotate_a(array_a, size_a);
+		swap_a(array_a);
+	}
+	else if (array_a[1] == min && array_a[2] == max)
+		swap_a(array_a);
+	else if (array_a[2] == min && array_a[1] == max)
+		reverse_rotate_a(array_a, size_a);
+	else if (array_a[2] == min && array_a[0] == max)
+	{
+		reverse_rotate_a(array_a, size_a);
+		reverse_rotate_a(array_a, size_a);
+	}
+	else if (array_a[1] == min && array_a[0] == max)
+		rotate_a(array_a, size_a);
+}
 
-// // Function to print an array
-// void	printArray(int array[], int size)
-// {
-// 	int	i;
 
-// 	i = 0;
-// 	while (i < size)
-// 	{
-// 		printf("%d  ", array[i]);
-// 		i++;
-// 	}
-// 	printf("\n");
-// }
-
-// // // Driver code
-// // int	main(int argc, char *argv[])
-// // {
-// // 	int	n;
-// // 	int	i;
-// // 	int	*array;
-
-// // 	n = argc - 1;
-// // 	i = 0;
-// // 	if (argc < 2)
-// // 	{
-// // 		printf("Usage: %s <num1> <num2> ... <numN>\n", argv[0]);
-// // 		return (1);
-// // 	}
-// // 	array = (int *)malloc(n * sizeof(int));
-// // 	if (array == NULL)
-// // 		return (0);
-// // 	while (i < n)
-// // 	{
-// // 		array[i] = atoi(argv[i + 1]);
-// // 		i++;
-// // 	}
-// // 	countingsort(array, n);
-// // 	printArray(array, n);
-// // 	free(array);
-// // 	return (0);
-// // }
+void	magichappenshere(int *array_a, int *array_b, int size_a, int size_b)
+{
+	if (!issorted(array_a, size_a))
+	{
+		if (size_a == 2 && !issorted(array_a, size_a))
+			swap_a(array_a);
+		else if (size_a == 3 && !issorted(array_a, size_a))
+			sort_three(array_a, size_a);
+		else
+		{
+			
+		}
+	}
+}

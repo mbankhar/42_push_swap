@@ -6,7 +6,7 @@
 /*   By: mbankhar <mbankhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 09:50:52 by mbankhar          #+#    #+#             */
-/*   Updated: 2024/04/22 13:27:43 by mbankhar         ###   ########.fr       */
+/*   Updated: 2024/04/22 16:18:53 by mbankhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	reverse_rotate_b(int *array_b, int size_b)
 	printf("rrb\n");
 }
 
-void	reverse_rotate_both(int *array_a, int *array_b, int size_a, int size_b)
+void	reverse_rotate_ab(int *array_a, int *array_b, int size_a, int size_b)
 {
 	int	i;
 	int	temp;
