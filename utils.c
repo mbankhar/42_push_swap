@@ -6,7 +6,7 @@
 /*   By: mbankhar <mbankhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 13:27:28 by mbankhar          #+#    #+#             */
-/*   Updated: 2024/04/26 14:20:47 by mbankhar         ###   ########.fr       */
+/*   Updated: 2024/04/26 16:56:34 by mbankhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,14 +63,21 @@ int	isreversesorted(int *array_a, int size_a)
 	return (1);
 }
 
-int	ft_sqrt(int *nbr)
+int	ft_range(int *nbr)
 {
 	int	i;
 
-	i = 1;
-	while (i * i != *nbr && i < *nbr / 2)
+	if (*nbr < 4)
+		return (1);
+	i = 2;
+	while (i * i < *nbr)
 		i++;
-	return (i);
+	if (i * i > *nbr)
+	{
+		if ((i * i - *nbr) < ((i - 1) * (i - 1) + (-*nbr)))
+			return (i);
+	}
+	return (i - 1);
 }
 
 int	count_r(int	*array_a, int size_a)

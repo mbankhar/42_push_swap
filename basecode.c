@@ -6,7 +6,7 @@
 /*   By: mbankhar <mbankhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 09:45:13 by mbankhar          #+#    #+#             */
-/*   Updated: 2024/04/26 15:08:30 by mbankhar         ###   ########.fr       */
+/*   Updated: 2024/04/26 16:56:17 by mbankhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	sortthere(int *array_a, int *array_b, int *size_a, int *size_b)
 
 	j = 0;
 	i = 0;
-	range = ft_sqrt(size_a) * 14 / 10;
+	range = ft_range(size_a) * 14 / 10;
 	while (*size_a > 0)
 	{
 		if (array_a[i] - 1 <= j)
@@ -109,7 +109,7 @@ void	magichappenshere(int *array_a, int *array_b, int size_a, int size_b)
 	else
 	{
 		sortthere(array_a, array_b, &size_a, &size_b);
-		reverse_rotate_b(array_b, size_b);
+		// reverse_rotate_b(array_b, size_b);
 		sortback(array_a, array_b, &size_a, &size_b);
 	}
 	i = -1;

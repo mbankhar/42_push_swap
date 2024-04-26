@@ -6,7 +6,7 @@
 /*   By: mbankhar <mbankhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 12:00:00 by mbankhar          #+#    #+#             */
-/*   Updated: 2024/04/26 15:13:32 by mbankhar         ###   ########.fr       */
+/*   Updated: 2024/04/26 16:56:42 by mbankhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	reverse_rotate_ab(int *array_a, int *array_b, int size_a, int size_b);
 void	magichappenshere(int *array_a, int *array_b, int size_a, int size_b);
 void	findminmax(int *arr, int size, int *min, int *max);
 int		isreversesorted(int *array_a, int size_a);
-int		ft_sqrt(int *nbr);
+int		ft_range(int *nbr);
 int		count_r(int	*array_a, int size_a);
 
 #endif
