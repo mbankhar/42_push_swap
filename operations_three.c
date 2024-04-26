@@ -6,7 +6,7 @@
 /*   By: mbankhar <mbankhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 09:50:52 by mbankhar          #+#    #+#             */
-/*   Updated: 2024/04/22 16:18:53 by mbankhar         ###   ########.fr       */
+/*   Updated: 2024/04/26 15:10:23 by mbankhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,3 @@ void	reverse_rotate_ab(int *array_a, int *array_b, int size_a, int size_b)
 	array_b[0] = temp;
 	printf("rrr\n");
 }
-
-
-

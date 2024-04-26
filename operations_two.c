@@ -6,7 +6,7 @@
 /*   By: mbankhar <mbankhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 08:49:24 by mbankhar          #+#    #+#             */
-/*   Updated: 2024/04/22 10:54:36 by mbankhar         ###   ########.fr       */
+/*   Updated: 2024/04/26 15:10:20 by mbankhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,3 @@ void	rotate_both(int *array_a, int *array_b, int size_a, int size_b)
 	array_b[size_b - 1] = temp;
 	printf("rr\n");
 }
-
-

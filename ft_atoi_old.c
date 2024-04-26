@@ -6,7 +6,7 @@
 /*   By: mbankhar <mbankhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 12:22:53 by mbankhar          #+#    #+#             */
-/*   Updated: 2024/04/22 15:11:07 by mbankhar         ###   ########.fr       */
+/*   Updated: 2024/04/26 15:08:40 by mbankhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,11 @@ int	ft_atoi(char *str)
 		exit(EXIT_FAILURE);
 	}
 	return (result * sign);
+}
+
+int	*get_array_b(int *array_b, int size_a, int *size_b)
+{
+	array_b = malloc(sizeof(int) * size_a);
+	*size_b = 0;
+	return (array_b);
 }

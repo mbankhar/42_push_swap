@@ -6,19 +6,18 @@
 /*   By: mbankhar <mbankhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 17:32:42 by mbankhar          #+#    #+#             */
-/*   Updated: 2024/04/22 16:57:17 by mbankhar         ###   ########.fr       */
+/*   Updated: 2024/04/26 15:10:12 by mbankhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	*getnumbers(int argc, char **argv, int *size_a)
+int	*getnumbers(char **argv, int *size_a)
 {
 	t_stack	size;
 	char	**stacks;
 	int		*convert;
 	int		i;
-	int		*array;
 
 	stacks = ft_split(argv[1], ' ');
 	i = 0;
@@ -79,44 +78,26 @@ int	checkforerror(int *array, int size)
 	return (1);
 }
 
-int	*get_array_b(int *array_a, int *array_b, int size_a, int *size_b)
-{
-	array_b = malloc(sizeof(int) * size_a);
-	*size_b = 0;
-	return (array_b);
-}
-
 int	main(int argc, char **argv)
 {
 	int				size_a;
-	int				*array_a;
 	int				size_b;
+	int				*array_a;
 	int				*array_b;
 
-	if (argc < 2 || argc == 2 && argv[1][0] == '\0')
+	array_a = NULL;
+	array_b = 0;
+	size_a = 0;
+	size_b = 0;
+	if (argc < 2 || (argc == 2 && argv[1][0] == '\0'))
 		return (0);
 	else if (argc == 2)
-		array_a = getnumbers(argc, argv, &size_a);
+		array_a = getnumbers(argv, &size_a);
 	else if (argc > 2)
 		array_a = getnumbers2(argc, argv, &size_a);
 	if (checkforerror(array_a, size_a))
-		array_b = get_array_b(array_a, array_b, size_a, &size_b);
+		array_b = get_array_b(array_b, size_a, &size_b);
+	change_numbers(array_a, size_a);
 	magichappenshere(array_a, array_b, size_a, size_b);
-	// int i = -1;
-	// while (++i < size_a)
-	// {
-	// 	printf("%d", array_a[i]);
-	// }
-	// reverse_rotate_a(array_a, size_a);
-	// swap_a(array_a);
-	// swap_a(array_a);
-	// reverse_rotate_a(array_a, size_a);
-	// reverse_rotate_a(array_a, size_a);
-	// reverse_rotate_a(array_a, size_a);
-	// rotate_a(array_a, size_a);
-	// i = -1;
-	// while (++i < size_a)
-	// {
-	// 	printf("%d ", array_a[i]);
-	// }
+	free(array_b);
 }

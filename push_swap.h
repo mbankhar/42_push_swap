@@ -6,7 +6,7 @@
 /*   By: mbankhar <mbankhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 12:00:00 by mbankhar          #+#    #+#             */
-/*   Updated: 2024/04/22 16:19:28 by mbankhar         ###   ########.fr       */
+/*   Updated: 2024/04/26 15:13:32 by mbankhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,21 @@
 typedef struct s_stack
 {
 	int				size;
-	// int				nbr;
-	// int				index;
-	// int				push_cost;
-	// bool			above_median;
-	// bool			cheapest;
+
 }	t_stack;
 
+void	change_numbers(int *array_a, int size_a);
+void	change_numbersparttwo(int *array_a, int *sorted_array, int size_a);
 int		ft_atoi(char *str);
 char	**ft_split(char const *s, char c);
 void	swap_a(int *array_a);
-int		issorted(int *array_a, int size_a);
+void	swap_b(int *array_b);
+int		*getnumbers(char **argv, int *size_a);
+int		*getnumbers2(int argc, char **argv, int *size_a);
+int		checkforerror(int *array, int size);
+int		*get_array_b(int *array_b, int size_a, int *size_b);
+void	swapboth(int *array_a, int *array_b);
+int		sort(int *array_a, int size_a);
 void	push_b(int *array_a, int *array_b, int *size_a, int *size_b);
 void	push_a(int *array_a, int *array_b, int *size_a, int *size_b);
 void	rotate_a(int *array_a, int size_a);
@@ -41,5 +45,9 @@ void	reverse_rotate_a(int *array_a, int size_a);
 void	reverse_rotate_b(int *array_b, int size_b);
 void	reverse_rotate_ab(int *array_a, int *array_b, int size_a, int size_b);
 void	magichappenshere(int *array_a, int *array_b, int size_a, int size_b);
+void	findminmax(int *arr, int size, int *min, int *max);
+int		isreversesorted(int *array_a, int size_a);
+int		ft_sqrt(int *nbr);
+int		count_r(int	*array_a, int size_a);
 
 #endif

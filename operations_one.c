@@ -6,7 +6,7 @@
 /*   By: mbankhar <mbankhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 15:13:53 by mbankhar          #+#    #+#             */
-/*   Updated: 2024/04/22 14:35:44 by mbankhar         ###   ########.fr       */
+/*   Updated: 2024/04/26 15:10:26 by mbankhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,4 +110,3 @@ void	push_b(int *array_a, int *array_b, int *size_a, int *size_b)
 	}
 	printf("pb\n");
 }
-
