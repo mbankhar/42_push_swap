@@ -6,7 +6,7 @@
 /*   By: mbankhar <mbankhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 17:32:42 by mbankhar          #+#    #+#             */
-/*   Updated: 2024/04/26 15:10:12 by mbankhar         ###   ########.fr       */
+/*   Updated: 2024/04/27 17:38:46 by mbankhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,11 @@ int	checkforerror(int *array, int size)
 	}
 	return (1);
 }
+// void  leaks(void)
+// {
+//   system("leaks push_swap");
+// }
+	// atexit(leaks);
 
 int	main(int argc, char **argv)
 {
@@ -100,4 +105,5 @@ int	main(int argc, char **argv)
 	change_numbers(array_a, size_a);
 	magichappenshere(array_a, array_b, size_a, size_b);
 	free(array_b);
+	free(array_a);
 }
