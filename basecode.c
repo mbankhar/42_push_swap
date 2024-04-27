@@ -6,7 +6,7 @@
 /*   By: mbankhar <mbankhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 09:45:13 by mbankhar          #+#    #+#             */
-/*   Updated: 2024/04/26 16:56:17 by mbankhar         ###   ########.fr       */
+/*   Updated: 2024/04/27 16:16:24 by mbankhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,37 @@
 
 void	sort_three(int	*array_a, int size_a)
 {
-	int	min;
-	int	max;
+	while (!sort(array_a, size_a))
+	{
+		if (array_a[0] > array_a[1] && array_a[1] < array_a[2])
+			swap_a(array_a);
+		else if (array_a[0] > array_a[1])
+			swap_a(array_a);
+		else if (!sort(array_a, size_a))
+			reverse_rotate_a(array_a, size_a);
+	}
+}
 
-	min = array_a[0];
-	max = array_a[0];
-	findminmax(array_a, size_a, &min, &max);
-	if (isreversesorted(array_a, size_a))
+void	sortfive(int *array_a, int *array_b, int size_a, int size_b)
+{
+	int	i;
+	int	j;
+
+	while (size_a > 0)
+		push_b(array_a, array_b, &size_a, &size_b);
+	while (size_b > 0)
 	{
-		swap_a(array_a);
-		reverse_rotate_a(array_a, size_a);
+		i = -1;
+		j = -1;
+		while (size_b - 1 >= ++i)
+		{
+			if (array_b[i] > j)
+				j = array_b[i];
+		}
+		while (array_b[0] != j)
+			rotate_b(array_b, size_b);
+		push_a(array_a, array_b, &size_a, &size_b);
 	}
-	if (array_a[0] == min && !sort(array_a, size_a))
-	{
-		reverse_rotate_a(array_a, size_a);
-		swap_a(array_a);
-	}
-	else if (array_a[1] == min && array_a[2] == max && !sort(array_a, size_a))
-		swap_a(array_a);
-	else if (array_a[2] == min && array_a[1] == max && !sort(array_a, size_a))
-		reverse_rotate_a(array_a, size_a);
-	else if (array_a[2] == min && array_a[0] == max && !sort(array_a, size_a))
-	{
-		reverse_rotate_a(array_a, size_a);
-		reverse_rotate_a(array_a, size_a);
-	}
-	else if (array_a[1] == min && array_a[0] == max && !sort(array_a, size_a))
-		rotate_a(array_a, size_a);
 }
 
 void	sortthere(int *array_a, int *array_b, int *size_a, int *size_b)
@@ -100,21 +104,15 @@ void	sortback(int *array_a, int *array_b, int *size_a, int *size_b)
 
 void	magichappenshere(int *array_a, int *array_b, int size_a, int size_b)
 {
-	int	i;
-
 	if (size_a == 2 && !sort(array_a, size_a))
 		swap_a(array_a);
 	else if (size_a == 3 && !sort(array_a, size_a))
 		sort_three(array_a, size_a);
+	else if (size_a <= 5)
+		sortfive(array_a, array_b, size_a, size_b);
 	else
 	{
 		sortthere(array_a, array_b, &size_a, &size_b);
-		// reverse_rotate_b(array_b, size_b);
 		sortback(array_a, array_b, &size_a, &size_b);
-	}
-	i = -1;
-	while (++i < size_a -1)
-	{
-		printf("%d", array_a[i]);
 	}
 }
