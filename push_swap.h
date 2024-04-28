@@ -6,7 +6,7 @@
 /*   By: mbankhar <mbankhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 12:00:00 by mbankhar          #+#    #+#             */
-/*   Updated: 2024/04/26 16:56:42 by mbankhar         ###   ########.fr       */
+/*   Updated: 2024/04/28 10:01:04 by mbankhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <stdbool.h>
+# include <unistd.h>
 
 typedef struct s_stack
 {
@@ -26,6 +27,7 @@ typedef struct s_stack
 
 void	change_numbers(int *array_a, int size_a);
 void	change_numbersparttwo(int *array_a, int *sorted_array, int size_a);
+void	ft_putendl_fd(char *s, int fd);
 int		ft_atoi(char *str);
 char	**ft_split(char const *s, char c);
 void	swap_a(int *array_a);

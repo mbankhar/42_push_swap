@@ -6,7 +6,7 @@
 /*   By: mbankhar <mbankhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 17:32:42 by mbankhar          #+#    #+#             */
-/*   Updated: 2024/04/27 17:38:46 by mbankhar         ###   ########.fr       */
+/*   Updated: 2024/04/28 15:45:52 by mbankhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,13 @@ int	*getnumbers2(int argc, char **argv, int *size_a)
 	i = 0;
 	while (i < size.size)
 	{
+		if (*argv[i + 1] == ' ' || *argv[i + 1] == '\t'
+			|| (argv[i + 1][0] == '-' && argv[i + 1][1] == '\0'))
+		{
+			ft_putendl_fd("Error", 2);
+			free(convert);
+			exit(EXIT_FAILURE);
+		}
 		convert[i] = ft_atoi(argv[i + 1]);
 		i++;
 	}
@@ -68,20 +75,22 @@ int	checkforerror(int *array, int size)
 		{
 			if (array[i] == array[j])
 			{
-				printf("Error");
+				ft_putendl_fd("Error", 2);
+				free(array);
 				exit(EXIT_FAILURE);
 			}
 			j++;
 		}
 		i++;
 	}
+	if (size == 0 || size == 1)
+	{
+		free(array);
+		exit(EXIT_SUCCESS);
+	}
 	return (1);
 }
-// void  leaks(void)
-// {
-//   system("leaks push_swap");
-// }
-	// atexit(leaks);
+
 
 int	main(int argc, char **argv)
 {

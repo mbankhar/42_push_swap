@@ -6,7 +6,7 @@
 /*   By: mbankhar <mbankhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 13:47:28 by mbankhar          #+#    #+#             */
-/*   Updated: 2024/04/26 13:51:59 by mbankhar         ###   ########.fr       */
+/*   Updated: 2024/04/28 10:00:04 by mbankhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,17 @@ void	change_numbersparttwo(int *array_a, int *sorted_array, int size_a)
 		}
 	}
 	free(sorted_array);
+}
+
+void	ft_putendl_fd(char *s, int fd)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		write(fd, &s[i], 1);
+		i++;
+	}
+	write(fd, "\n", 1);
 }
