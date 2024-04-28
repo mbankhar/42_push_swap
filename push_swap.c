@@ -6,7 +6,7 @@
 /*   By: mbankhar <mbankhar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 17:32:42 by mbankhar          #+#    #+#             */
-/*   Updated: 2024/04/28 15:45:52 by mbankhar         ###   ########.fr       */
+/*   Updated: 2024/04/28 15:49:00 by mbankhar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ int	checkforerror(int *array, int size)
 	}
 	return (1);
 }
-
 
 int	main(int argc, char **argv)
 {
